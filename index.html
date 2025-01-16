@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #puntos-canva {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <msup>
+      <mi>x</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>+</mo>
+    <mi>b</mi>
+    <mi>x</mi>
+    <mo>+</mo>
+    <mi>c</mi>
+    <mo>=</mo>
+    <mi>0</mi>
+  </math>
+  <h1>Aproximación PI</h1>
+
+  <div>
+    
+      <p>El área de un círculo es &pi;r^2</p>
+      <p>El área de un cuadrado es (2r)^2 = 4r^2</p>
+      <p>La proporcion de puntos que hay dentro del circulo entre los totales</p>
+      <p>La razon entre el area del ciruclo y el del cuadrado es <br>
+        πr^2/4r^2 = π/4</p>
+      <p>Despejando π/4 = puntos dentro / puntos totales</p>
+      <p>π = 4 * (número de puntos en el círculo) / (número de puntos en el cuadrado)</p>
+   
+  </div>
+
+  Puntos totales: <span id="total-points"></span> <br>
+  Puntos dentro de la circunferencia: <span id="circunference-points">0</span> <br>
+  Relación 4 * (t / c): <span id="pi-aproximation">-</span>
+  <br>
+  <label for="input-visionate-points">Ver simulacion punto a punto</label>
+  <input id="input-visionate-points" type="checkbox"> <br>
+  <label for="input-total-points">Puntos totales</label>
+  <input id="input-total-points" type="text" value="1000">
+  <button id="start-simulation-button">Empezar simulacion</button>
+  <br>
+  <canvas id="puntos-canvas" width="500" height="500"></canvas>
+  <script>
+    const $ = (id) => document.getElementById(id)
+
+    const canvas = $("puntos-canvas")
+    const totalPointsSpan = $("total-points")
+    const circunferencePointsSpan = $("circunference-points")
+    const piAproximationSpan = $("pi-aproximation")
+    const startSimulationButton = $("start-simulation-button")
+    const context = canvas.getContext("2d")
+    const xBigCircle = canvas.width / 2
+    const yBigCircle = canvas.height / 2
+    const radiusBigCircle = canvas.width / 2
+
+    context.beginPath()
+    context.arc(xBigCircle, yBigCircle, radiusBigCircle, 0, 2 * Math.PI) // (x - 250)^2 + (y - 250)^2 < 250^2
+    context.stroke()
+
+    let x, y
+
+    startSimulationButton.addEventListener("click", () => {
+      const visionatePoints = $("input-visionate-points").checked
+
+      context.clearRect(0, 0, canvas.width, canvas.height)
+      context.beginPath()
+      context.arc(xBigCircle, yBigCircle, radiusBigCircle, 0, 2 * Math.PI) // (x - 250)^2 + (y - 250)^2 < 250^2
+      context.stroke()
+      let totalPoints = 0, bigCirclePoints = 0
+      const maxTotalPoints = $("input-total-points").value || 1000
+      totalPointsSpan.textContent = maxTotalPoints
+  
+      function generatePoints() {
+        context.beginPath()
+        x = Math.random() * canvas.width
+        y = Math.random() * canvas.height
+        if (Math.pow(x - xBigCircle, 2) + Math.pow(y - yBigCircle, 2) <= Math.pow(radiusBigCircle, 2)) {
+          context.fillStyle = "green"
+          bigCirclePoints++
+        } else
+          context.fillStyle = "red"
+  
+        context.arc(x, y, 1, 0, 2 * Math.PI)
+        context.fill()
+        totalPoints++
+        totalPointsSpan.textContent = totalPoints
+        circunferencePointsSpan.textContent = bigCirclePoints
+        piAproximationSpan.textContent = (4 * (bigCirclePoints / totalPoints)).toFixed(6)   
+      }
+
+      if (visionatePoints) {
+        const intervalId = setInterval(() => {
+          generatePoints()
+          if (totalPoints >= maxTotalPoints) {
+            clearInterval(intervalId)
+          }
+        }, 1)
+      } else {
+        for (let i = 0; i < maxTotalPoints; i++) {
+          generatePoints()
+        }
+      }
+
+  
+      circunferencePointsSpan.textContent = bigCirclePoints
+      piAproximationSpan.textContent = 4 * (bigCirclePoints / totalPoints)
+    })
+
+  </script>
+</body>
+
+</html>
