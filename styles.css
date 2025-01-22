@@ -7,14 +7,16 @@ h1 {
 }
 
 body {
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  background-color: #282c34;
+  color: #BBBBBB;
 }
 
 #todo {
-
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -25,6 +27,7 @@ body {
 }
 
 .columnas {
+  align-items: center;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -37,4 +40,61 @@ body {
 
 #div-texto {
   width: 40%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+button {
+  background-color: #282c34;
+  color: #BBBBBB;
+  border: 1px solid #BBBBBB;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 200px;
+}
+
+button:hover {
+  background: #BBBBBB; /* Cambia el fondo al pasar el cursor */
+  color: #2d2d3a; /* Cambia el color del texto */
+}
+
+#input-total-points{
+  font-family: Arial, sans-serif;
+  width: 100px;
+  padding: 5px;
+  margin: 5px;
+  border: 2px groove #BBBBBB;
+  background-color: #444a57;
+  color: #BBBBBB;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  appearance: none; /* Oculta el diseño nativo del checkbox */
+  background-color: #444a57; /* Color de fondo sin pulsar */
+  border: 1px solid #BBBBBB;
+  border-radius: 1px; /* Bordes redondeados (opcional) */
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Cambiar color cuando está seleccionado */
+input[type="checkbox"]:checked {
+  background-color: #BBBBBB; /* Verde */
+  border-color: #BBBBBB;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✔';
+  display: block;
+  color: #282c34;
+  font-size: 14px;
+  text-align: center;
+  line-height: 12px;
 }

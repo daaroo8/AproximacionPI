@@ -12,9 +12,25 @@
   <h1>Aproximación PI</h1>
   <div id="todo">
     <div class="columnas" id="div-canvas">
-      Puntos totales: <span id="total-points"></span><br>
-      Puntos dentro de la circunferencia: <span id="circunference-points"></span><br>
-      Relación 4 * (t / c): <span id="pi-aproximation"></span>
+      Puntos totales<span id="total-points">0</span><br>
+      Puntos dentro de la circunferencia<span id="circunference-points">0</span><br>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mtext class="bold">
+          <mi>Relación:</mi>
+        </mtext>
+        <mo>&nbsp;</mo>
+        <mn>4</mn>
+        <mo>&#x22C5;</mo>
+        <mfrac>
+          <mrow>
+            <mtext>puntos dentro del círculo</mtext>
+          </mrow>
+          <mrow>
+            <mtext>puntos totales</mtext>
+          </mrow>
+        </mfrac>
+      </math><br>
+      <span id="pi-aproximation">0</span>
       <br>
       <label for="input-visionate-points">Ver simulacion punto a punto</label>
       <input id="input-visionate-points" type="checkbox"> <br>
@@ -110,7 +126,7 @@
           </mfrac>
         </math>
         <br><br>
-        Despejando:<br><br>
+        Despejando:<br>
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mi>&pi;</mi>
           <mo>=</mo>
@@ -143,6 +159,7 @@
     const yBigCircle = canvas.height / 2
     const radiusBigCircle = canvas.width / 2
 
+    context.strokeStyle = "#BBBBBB"
     context.beginPath()
     context.rect(0, 0, canvas.width, canvas.height)
     context.stroke()
@@ -154,7 +171,7 @@
 
     startSimulationButton.addEventListener("click", () => {
       const visionatePoints = $("input-visionate-points").checked
-
+      context.strokeStyle = "#BBBBBB"
       context.clearRect(0, 0, canvas.width, canvas.height)
       context.beginPath()
       context.rect(0, 0, canvas.width, canvas.height)
@@ -172,10 +189,10 @@
         x = Math.round(Math.random() * canvas.width)
         y = Math.round(Math.random() * canvas.height)
         if (Math.pow(x - xBigCircle, 2) + Math.pow(y - yBigCircle, 2) <= Math.pow(radiusBigCircle, 2)) {
-          context.fillStyle = "green"
+          context.fillStyle = "rgb(137, 202, 107)"
           bigCirclePoints++
         } else
-          context.fillStyle = "red"
+          context.fillStyle = "rgb(239, 78, 81)"
 
         context.arc(x, y, 1.5, 0, 2 * Math.PI)
         context.fill()
