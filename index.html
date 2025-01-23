@@ -4,20 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Aproximacion PI Dia de la Ciencia</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <h1>Aproximación PI</h1>
   <div id="todo">
-    <div class="columnas" id="div-canvas">
-      Puntos totales<span id="total-points">0</span><br>
-      Puntos dentro de la circunferencia<span id="circunference-points">0</span><br>
+    <div class="columnas" id="div-texto-canvas">
+      <p>Puntos totales: <span id="total-points">0</span><br>
+      Puntos dentro de la circunferencia: <span id="circunference-points">0</span><br>
+      Relacion: 
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mtext class="bold">
-          <mi>Relación:</mi>
-        </mtext>
         <mo>&nbsp;</mo>
         <mn>4</mn>
         <mo>&#x22C5;</mo>
@@ -30,21 +28,26 @@
           </mrow>
         </mfrac>
       </math><br>
-      <span id="pi-aproximation">0</span>
+      Aproximación de &pi;: <span id="pi-aproximation">0</span>
       <br>
-      <label for="input-visionate-points">Ver simulacion punto a punto</label>
-      <input id="input-visionate-points" type="checkbox"> <br>
-      <label for="input-total-points">Puntos totales</label>
-      <input id="input-total-points" type="text" value="1000">
-      <button id="start-simulation-button">Empezar simulacion</button>
+      <label for="input-visionate-points">Ver simulacion punto a punto: </label> 
+      <input id="input-visionate-points" type="checkbox"><br>
+      <label for="input-total-points">Puntos totales: </label>
+      <input id="input-total-points" type="text" value="1000"><br>
+      <div class="centered">
+        <button id="start-simulation-button">Empezar simulacion</button>
+      </div>
       <br>
-      <br>
+      </p>
+    </div>
+    <div class="columnas" id="div-canvas">
       <canvas id="puntos-canvas" width="500" height="500"></canvas>
     </div>
+
     <div class="columnas" id="div-texto">
 
-      <p>El área de un círculo es:<br>
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <p>El área de un círculo es:
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mi>π</mi>
           <msup>
             <mi>r</mi>
@@ -52,8 +55,8 @@
           </msup>
         </math>
         <br><br>
-        El área de un cuadrado de lado 2r es:<br>
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        El área de un cuadrado de lado 2r es: 
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <msup>
             <mi>(2r)</mi>
             <mn>2</mn>
@@ -65,13 +68,13 @@
           </msup>
         </math>
         <br><br>
-        El número de puntos que hay dentro<br>
-        del circulo inscrito, es una<br>
-        aproximación al área del círculo.<br><br>
-        El numero de puntos que hay en todo<br>
-        el cuadrado (abarcando el circulo) es una<br>
-        aproximación al área del cuadrado.<br><br>
-        Por lo tanto una relación entre las fórmulas<br>
+        El número de puntos que hay dentro
+        del circulo inscrito, es una
+        aproximación al área del círculo.<br>
+        El numero de puntos que hay en todo
+        el cuadrado (abarcando el circulo) es una
+        aproximación al área del cuadrado.<br>
+        Por lo tanto una relación entre las fórmulas
         de los áreas:<br>
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mfrac>
