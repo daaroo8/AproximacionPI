@@ -22,12 +22,11 @@ body {
   text-align: center;
   display: flex;
   width: auto;
-  margin: 10px;
-  padding: 10px;
 }
 
 .columnas {
   align-items: center;
+  text-align: justify;
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -35,12 +34,16 @@ body {
 }
 
 #div-canvas {
-  width: 500px;
+  width: 30%;
+}
+
+#div-texto-canvas{
+  width: 25%;
 }
 
 #div-texto {
-  width: 40%;
-}
+  width: 45%;
+} 
 
 .bold {
   font-weight: bold;
@@ -56,6 +59,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   width: 200px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
@@ -79,14 +83,14 @@ input[type="checkbox"] {
   appearance: none; /* Oculta el diseño nativo del checkbox */
   background-color: #444a57; /* Color de fondo sin pulsar */
   border: 1px solid #BBBBBB;
-  border-radius: 1px; /* Bordes redondeados (opcional) */
   cursor: pointer;
+  bottom: 0;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Cambiar color cuando está seleccionado */
 input[type="checkbox"]:checked {
-  background-color: #BBBBBB; /* Verde */
+  background-color: #BBBBBB;
   border-color: #BBBBBB;
 }
 
@@ -97,4 +101,9 @@ input[type="checkbox"]:checked::after {
   font-size: 14px;
   text-align: center;
   line-height: 12px;
+}
+
+.centered{
+  text-align: center;
+  align-items: center;
 }
